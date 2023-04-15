@@ -1,0 +1,46 @@
+{
+    "chatChannel":"nymn",
+    "quality":"720p",
+    "timeZone":"Europe/Berlin","clippingRate":3,
+    "clipLength":12,"msgPosting":2,
+    "Detectors":[
+        {
+            "title":"Nime FORSEN",
+            "msg":"DinkDonk ❗ Nime 📣 FORSEN❗ DinkDonk ",
+            "positionInClip":0.5,
+            "scenarios":[ 
+                [ 
+                    { "name":"NimeForsen: nime+forsen","thresh":1 ,"windowSize":8 , 
+                    "combinations":[ {"include": ["Nime","forsen"],"lockSensitive" :false } ]
+                    },
+            
+                    { "name":"NimeForsen: forsen","thresh":3 ,"windowSize":8 , 
+                    "combinations":[ {"include": ["forsen"],"lockSensitive" :false } ]
+                    },
+            
+                    { "name":"NimeForsen: Nime","thresh":3,"windowSize":8 , 
+                    "combinations":[ {"include": ["Nime"],"lockSensitive" :true } ] 
+                    }  
+                ],
+
+                [
+                    { "name":"FORSEN: forsen","thresh":5 ,"windowSize":8 , 
+                    "combinations":[ {"include": ["forsen"],"lockSensitive" :false } ]
+                    },
+            
+                    { "name":"FORSEN: Nime","thresh":4,"windowSize":8 , 
+                    "combinations":[ {"include": ["Nime"],"lockSensitive" :true } ] 
+                    }  
+                ],
+                [
+                    { "name":"nimecommand","users":["fawcan","ziedyt"],"thresh":1,"windowSize":2,"positionInClip":0.8,
+                    "combinations":[ {"include": ["!forsen+1"],"lockSensitive" :true } ] 
+                    }
+                ]
+
+            ]
+
+        }
+    ]
+
+}
