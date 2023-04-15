@@ -60,6 +60,12 @@ def hello():
     page=htmlBuilder(summary)
     return page
 
+import flask.cli    
+flask.cli.show_server_banner = lambda *args: None
+
+import logging
+logging.getLogger("werkzeug").disabled = True
+
 
 if __name__ == '__main__':
     mainapp=mainApp()
