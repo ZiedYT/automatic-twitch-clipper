@@ -2,7 +2,7 @@
     "chatChannel":"erobb221","streamChannel":"erobb221",
     "quality":"720p",
     "timeZone":"US/Central","clippingRate":3,
-    "clipLength":14,"msgPosting":4,
+    "clipLength":14,"msgPosting":3,
     "Detectors":[
         {
             "title":"\ud83e\uddad ARF ARF ",
@@ -11,7 +11,7 @@
             "scenarios":[ 
                 [ 
                     { "name":"seal","thresh":7,"windowSize":7,
-                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"] ,"lockSensitive" :true } ] 
                     }
                 ]
             ]
@@ -37,8 +37,8 @@
                 [ 
                     { "name":"rooster+wut: rooster","thresh":5,"windowSize":8,
                     "combinations":[ 
-                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ] 
+                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ] 
                     },
                     { "name":"rooster+wut: WutFace","thresh":6,"windowSize":6,
                     "combinations":[ {"include": ["WutFace"],"lockSensitive" :true } ] 
@@ -46,8 +46,8 @@
                 ],
                 [
                     { "name":"rooster","thresh":6,"windowSize":8,
-                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ] 
                     }
                 ]
             ]
