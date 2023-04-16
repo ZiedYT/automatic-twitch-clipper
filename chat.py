@@ -161,7 +161,7 @@ class msgDetector:
 
                         for combination in combinations:
                             words= combination["include"]
-                            lock = combination["lockSensitive"]
+                            lock = combination["caseSensitive"]
                             exclude = None
                             exclude = combination.get("exclude",[])
 

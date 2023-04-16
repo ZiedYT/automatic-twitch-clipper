@@ -11,7 +11,7 @@
             "scenarios":[ 
                 [ 
                     { "name":"seal","thresh":7,"windowSize":7,
-                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"] ,"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"] ,"caseSensitive" :true } ] 
                     }
                 ]
             ]
@@ -23,7 +23,7 @@
             "positionInClip":0.6,
             "scenarios":[ 
                 [ 
-                    { "name":"LiMau5","thresh":6,"windowSize":6, "combinations":[ {"include": ["LiMau5"],"lockSensitive" :true } ] 
+                    { "name":"LiMau5","thresh":6,"windowSize":6, "combinations":[ {"include": ["LiMau5"],"caseSensitive" :true } ] 
                     }
                 ]
             ]
@@ -37,17 +37,17 @@
                 [ 
                     { "name":"rooster+wut: rooster","thresh":5,"windowSize":8,
                     "combinations":[ 
-                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ] 
+                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"caseSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"caseSensitive" :true } ] 
                     },
                     { "name":"rooster+wut: WutFace","thresh":6,"windowSize":6,
-                    "combinations":[ {"include": ["WutFace"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["WutFace"],"caseSensitive" :true } ] 
                     }
                 ],
                 [
                     { "name":"rooster","thresh":6,"windowSize":8,
-                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"caseSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:"],"caseSensitive" :true } ] 
                     }
                 ]
             ]

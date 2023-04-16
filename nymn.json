@@ -11,30 +11,30 @@
             "scenarios":[ 
                 [ 
                     { "name":"NimeForsen: nime+forsen","thresh":1 ,"windowSize":8 , 
-                    "combinations":[ {"include": ["Nime","forsen"],"lockSensitive" :false } ]
+                    "combinations":[ {"include": ["Nime","forsen"],"caseSensitive" :false } ]
                     },
             
                     { "name":"NimeForsen: forsen","thresh":3 ,"windowSize":8 , 
-                    "combinations":[ {"include": ["forsen"],"lockSensitive" :false } ]
+                    "combinations":[ {"include": ["forsen"],"caseSensitive" :false } ]
                     },
             
                     { "name":"NimeForsen: Nime","thresh":3,"windowSize":8 , 
-                    "combinations":[ {"include": ["Nime"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["Nime"],"caseSensitive" :true } ] 
                     }  
                 ],
 
                 [
                     { "name":"FORSEN: forsen","thresh":5 ,"windowSize":8 , 
-                    "combinations":[ {"include": ["forsen"],"lockSensitive" :false } ]
+                    "combinations":[ {"include": ["forsen"],"caseSensitive" :false } ]
                     },
             
                     { "name":"FORSEN: Nime","thresh":4,"windowSize":8 , 
-                    "combinations":[ {"include": ["Nime"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["Nime"],"caseSensitive" :true } ] 
                     }  
                 ],
                 [
                     { "name":"nimecommand","users":["fawcan","ziedyt"],"thresh":1,"windowSize":2,"positionInClip":0.8,
-                    "combinations":[ {"include": ["!forsen+1"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["!forsen+1"],"caseSensitive" :true } ] 
                     }
                 ]
 

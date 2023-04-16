@@ -12,15 +12,15 @@
             "scenarios":[ 
                 [ 
                     { "name":"seal","thresh":7,"windowSize":7,
-                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"caseSensitive" :true } ] 
                     }
                 ],
                 [ 
                     { "name":"britt seal emoji","thresh":4,"windowSize":7,
-                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"caseSensitive" :true } ] 
                     },
                     { "name":"britt seal SeaL","thresh":4,"windowSize":7,
-                    "combinations":[ {"include": ["SeaL"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["SeaL"],"exclude":["\ud83d\udc13","\ud83d\udc14","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"] ,"caseSensitive" :true } ] 
                     }
                 ]
 
@@ -34,17 +34,17 @@
             "scenarios":[ 
                 [ 
                     { "name":"rooster+wut: rooster","thresh":5,"windowSize":8,
-                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"caseSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"caseSensitive" :true } ] 
                     },
                     { "name":"rooster+wut: WutFace","thresh":6,"windowSize":6,
-                    "combinations":[ {"include": ["WutFace"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["WutFace"],"caseSensitive" :true } ] 
                     }
                 ],
                 [
                     { "name":"rooster","thresh":6,"windowSize":8,
-                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"lockSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"caseSensitive" :true } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["\ud83e\uddad","Regret","Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls"],"caseSensitive" :true } ] 
                     }
                 ]
             ]
