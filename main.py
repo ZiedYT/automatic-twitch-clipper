@@ -95,7 +95,7 @@ class autoClipperStreamable:
         return loc_dt.strftime('%Y:%m:%d %H:%M:%S %Z %z')
 
     def upload(self,detector,timestamp,position):
-        print("starting upload thread for",self.chatChannel)
+        print("starting upload thread for",self.chatChannel,"position",position)
         print("--------")
         T=self.getTime()
         # timestamp=detector.instances[0]
