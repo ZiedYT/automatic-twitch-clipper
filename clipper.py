@@ -62,12 +62,12 @@ class TwitchClipper:
         self.session.set_option("stream-timeout",10)
 
     def isLiveQuery(self):
-        HEADERS = { 'client-id' : 'kimne78kx3ncx6brgo4mv6wki5h1ko' }
-        GQL_QUERY = """ query($login: String) {user(login: $login) {stream {id}}}"""
-        QUERY = { 'query': GQL_QUERY, 'variables': {'login': self.username} }
-        response = requests.post('https://gql.twitch.tv/gql', json=QUERY, headers=HEADERS)
-        dict_response = response.json()
         try:
+            HEADERS = { 'client-id' : 'kimne78kx3ncx6brgo4mv6wki5h1ko' }
+            GQL_QUERY = """ query($login: String) {user(login: $login) {stream {id}}}"""
+            QUERY = { 'query': GQL_QUERY, 'variables': {'login': self.username} }
+            response = requests.post('https://gql.twitch.tv/gql', json=QUERY, headers=HEADERS)
+            dict_response = response.json()
             return True if dict_response['data']['user']['stream'] is not None else False
         except:
             return False

@@ -57,17 +57,22 @@ class autoClipperStreamable:
 
         
     def loopOnce(self):
+        lines=None
+        lines= self.chatBot.spinOnce()
+
         try:
             self.recorder.loopOnce()
         except Exception as e: 
-            print(str(e))
-        lines=None
-        lines= self.chatBot.spinOnce()
+            print("###",str(e))
+            time.sleep(1)
+            return
+        
         if(lines==None):
             return
         self.linesCount= (self.linesCount+len( lines ))%10000
 
         if(not self.recorder.online):
+            time.sleep(1)
             return
 
         for detector in self.detectors:
@@ -81,7 +86,7 @@ class autoClipperStreamable:
                 if(detector.run):
                     detector.run=False
                     threading.Thread(target=self.upload, args=(detector,timestamp,position,)).start()
-        time.sleep( 0.002)
+        
 
     def getTime(self):
         timeZone = pytz.timezone(self.timeZone)
