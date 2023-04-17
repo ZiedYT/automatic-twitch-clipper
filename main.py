@@ -1,6 +1,7 @@
 from chat import twitchChat,msgDetector
 from clipper import TwitchClipper
 from streamable import streamableUploader
+from imgur import imgur
 import time
 import threading
 from pathlib import Path
@@ -201,7 +202,10 @@ class mainApp:
         self.clippers=[]
         print(datetime.datetime.now() )
         self.loadCredentials()
-        self.uploader= streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+        if( not self.cred["imgurClinetID"] == "your_imgur_client"):
+            self.uploader=imgur(self.cred["imgurClinetID"])
+        else:
+            self.uploader= streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
 
         for file in glob.glob("*.json"):
             channel = file.replace(".json","")
@@ -218,8 +222,8 @@ class mainApp:
     def loadCredentials(self):
         self.cred={}
         path="credentials.json"
-        parts=["streamableLogin","streamablePass","chatToken","recorderaouth","clipperChannel"]
-        unasigned=["your_streamable_email","your_streamable_password","your_chat_token","your_twitch_stream_aouth","your_twitch"]
+        parts=["streamableLogin","streamablePass","chatToken","recorderaouth","clipperChannel","imgurClinetID"]
+        unasigned=["your_streamable_email","your_streamable_password","your_chat_token","your_twitch_stream_aouth","your_twitch","your_imgur_client"]
         if( os.path.isfile(path) ):
             with open(path,"rb") as json_file:
                 data = json.load(json_file) 
