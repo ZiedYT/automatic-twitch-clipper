@@ -113,7 +113,7 @@ class autoClipperStreamable:
             title = detector.title
             title+=" "+T+" automated by ZiedYT"
             try:
-                url = "https://streamable.com/"+self.uploader.uplaodFile(file,title)
+                url = self.uploader.uploadFile(file,title)
                 self.uploader.waitForUpload(url)
                 if(detector.msg!=None):
                     tosend= detector.msg +" "+url+self.msgEnding

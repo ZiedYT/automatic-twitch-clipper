@@ -7,9 +7,9 @@ class streamableUploader:
         self.password=password
         self.api=StreamableApi(name, password)
 
-    def uplaodFile(self,filePath,videoTitle):
+    def uploadFile(self,filePath,videoTitle):
         info = self.api.upload_video(filePath, videoTitle)
-        return info["shortcode"]
+        return "https://streamable.com/"+info["shortcode"]
 
     def waitForUpload(self,url):
         while True:
