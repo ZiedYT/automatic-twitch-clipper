@@ -1,7 +1,6 @@
 from chat import twitchChat,msgDetector
 from clipper import TwitchClipper
-from streamable import streamableUploader
-from imgur import imgur
+from uploader import uploader
 import time
 import threading
 from pathlib import Path
@@ -114,7 +113,7 @@ class autoClipperStreamable:
             title+=" "+T+" automated by ZiedYT"
             try:
                 url = self.uploader.uploadFile(file,title)
-                self.uploader.waitForUpload(url)
+                # self.uploader.waitForUpload(url)
                 if(detector.msg!=None):
                     tosend= detector.msg +" "+url+self.msgEnding
                     lastcount=self.linesCount-10
@@ -202,10 +201,7 @@ class mainApp:
         self.clippers=[]
         print(datetime.datetime.now() )
         self.loadCredentials()
-        if( not self.cred["imgurClinetID"] == "your_imgur_client"):
-            self.uploader=imgur(self.cred["imgurClinetID"])
-        else:
-            self.uploader= streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+        self.uploader=uploader(self.cred["streamableLogin"],self.cred["streamablePass"],self.cred["imgurClinetID"] )
 
         for file in glob.glob("*.json"):
             channel = file.replace(".json","")
