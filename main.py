@@ -219,7 +219,7 @@ class mainApp:
 
     def loadCredentials(self):
         self.cred={}
-        path="credentials.json"
+        path="secrets.json"
         parts=["streamableLogin","streamablePass","chatToken","recorderaouth","clipperChannel","imgurClinetID"]
         unasigned=["your_streamable_email","your_streamable_password","your_chat_token","your_twitch_stream_aouth","your_twitch","your_imgur_client"]
         if( os.path.isfile(path) ):
