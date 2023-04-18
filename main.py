@@ -113,7 +113,7 @@ class autoClipperStreamable:
             title = detector.title
             title+=" "+T+" automated by ZiedYT"
             try:
-                url = self.uploader.uploadFile(file,title)
+                url = self.uploader.uploadFile(file,title,self.chatChannel)
                 # self.uploader.waitForUpload(url)
                 if(detector.msg!=None):
                     tosend= detector.msg +" "+url+self.msgEnding

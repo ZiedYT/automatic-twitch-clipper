@@ -9,7 +9,7 @@ class uploader:
         self.imgur = imgur(clientID=self.imgurClient)
         self.streamable = streamableUploader(streamableLogin,streamablePass)
 
-    def uploadFile(self,filePath,videoTitle):
+    def uploadFile(self,filePath,videoTitle,parent=""):
         try:
             url = self.imgur.uploadFile(filePath,videoTitle)
             return url

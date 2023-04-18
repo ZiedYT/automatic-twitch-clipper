@@ -5,7 +5,7 @@ class imgur:
     def __init__(self,clientID):
         self.clientID=clientID
     
-    def uploadFile(self,path,videotitle):
+    def uploadFile(self,path,videotitle,parent=""):
         url = "https://api.imgur.com/3/upload"
         payload = {
             'title': videotitle,
