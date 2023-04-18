@@ -64,8 +64,8 @@ class autoClipperStreamable:
         try:
             self.recorder.loopOnce()
         except Exception as e: 
-            print("###",str(e))
-            time.sleep(1)
+            print("### recorded errror at",self.streamChannel,str(e))
+            time.sleep(0.1)
             return
         
         if(lines==None):
@@ -73,7 +73,7 @@ class autoClipperStreamable:
         self.linesCount= (self.linesCount+len( lines ))%10000
 
         if(not self.recorder.online):
-            time.sleep(1)
+            time.sleep(0.1)
             return
 
         for detector in self.detectors:
@@ -146,7 +146,7 @@ class autoClipperStreamable:
 
         else:
             print("no file")
-        # time.sleep(3)
+        time.sleep(4)
         detector.cleanAll()
         detector.uploading=False
         detector.run=True

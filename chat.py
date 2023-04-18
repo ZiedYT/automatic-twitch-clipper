@@ -28,6 +28,7 @@ class twitchChat:
         self.reping = 180
     def close(self):
         self.soc.close()
+        
     def connect(self):
         self.soc = socket.socket()
         self.soc.connect((self.server, self.port))
@@ -95,24 +96,19 @@ class twitchChat:
             
         except Exception as e:
             try:
-                print(self.channel,str(e) )
+                print("chat bot error at",self.channel,str(e) )
                 if("that is not a socket" in str(e)):
                     self.soc = None
-                    self.soc = socket.socket()
-                elif(self.soc==None):
-                    self.soc = None
-                    self.soc = socket.socket()
-                else:
+                elif(not self.soc==None):
                     self.soc.close()
                     self.soc = None
-                    self.soc = socket.socket()
 
                 self.connect()
             except:
                 pass
             #print("reconnecting")
             #self.connect()
-        return ""
+        return None
     
 
 # msgDetector gets active if one scenario is active

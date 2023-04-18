@@ -10,7 +10,7 @@
             "positionInClip":0.5,
             "scenarios":[ 
                 [ 
-                    { "name":"seal","thresh":7,"windowSize":7,
+                    { "name":"seal","thresh":7,"windowSize":5,
                     "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"] ,"caseSensitive" :true } ] 
                     }
                 ]
