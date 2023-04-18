@@ -1,6 +1,6 @@
 from chat import twitchChat,msgDetector
 from clipper import TwitchClipper
-from uploader import uploader
+from drive import drive
 from streamable import streamableUploader
 import time
 import threading
@@ -202,7 +202,12 @@ class mainApp:
         self.clippers=[]
         print(datetime.datetime.now() )
         self.loadCredentials()
-        self.uploader =streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+        if( os.path.isfile("token.json") ):
+            self.uploader = drive()
+            print("using google drive")
+        else:
+            self.uploader =streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+            print("using streamable")
         # self.uploader=uploader(self.cred["streamableLogin"],self.cred["streamablePass"],self.cred["imgurClinetID"] )
 
         for file in glob.glob("*.json"):
