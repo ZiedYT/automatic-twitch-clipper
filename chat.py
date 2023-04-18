@@ -209,6 +209,7 @@ class msgDetector:
         times=[]
         timestamps=[]
         positions=[]
+        names=[]
         for valid, scenario in zip(valids,self.scenarios):
             if(not valid):
                 continue
@@ -216,6 +217,7 @@ class msgDetector:
             ts =[]
             stamps=[]
             position=self.positionInClip
+            name=""
             for counter in scenario:
                 position = counter.get("positionInClip",position)
                 activationTimes = [counter["activations"][username] for username in counter["activations"]]
@@ -223,15 +225,17 @@ class msgDetector:
                 indx = activationTimestamps.index(min(activationTimestamps))
                 ts.append( activationTimes[indx] )
                 stamps.append( activationTimestamps[indx] )
-
+                name=name+counter["name"]
             indx = ts.index(max(ts)) #use the counter that was activated the last
             times.append(ts[indx] )
             timestamps.append( stamps[indx])
             positions.append(position)
+            names.append(name)
 
         if(True in valids): 
             index = timestamps.index( min(timestamps) ) # use the first active scenario
             # self.instances=[  ]
+            print( names[index] ,"starting upload")
             return True, times[index], positions[index]
         
         return False,0,0

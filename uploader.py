@@ -9,12 +9,12 @@ class uploader:
         self.imgur = imgur(clientID=self.imgurClient)
         self.streamable = streamableUploader(streamableLogin,streamablePass)
 
-    def uploadFile(self,videoTitle):
+    def uploadFile(self,filePath,videoTitle):
         try:
-            url = self.imgur.uploadFile(videoTitle)
+            url = self.imgur.uploadFile(filePath,videoTitle)
             return url
         except Exception as e:
             print("couldnt use imgur",str(e))
-            url = self.streamable.uploadFile(videoTitle)
+            url = self.streamable.uploadFile(filePath,videoTitle)
             self.streamable.waitForUpload(url)
             return url
