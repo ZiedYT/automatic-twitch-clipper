@@ -1,6 +1,7 @@
 from chat import twitchChat,msgDetector
 from clipper import TwitchClipper
 from uploader import uploader
+from streamable import streamableUploader
 import time
 import threading
 from pathlib import Path
@@ -201,7 +202,8 @@ class mainApp:
         self.clippers=[]
         print(datetime.datetime.now() )
         self.loadCredentials()
-        self.uploader=uploader(self.cred["streamableLogin"],self.cred["streamablePass"],self.cred["imgurClinetID"] )
+        self.uploader =streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+        # self.uploader=uploader(self.cred["streamableLogin"],self.cred["streamablePass"],self.cred["imgurClinetID"] )
 
         for file in glob.glob("*.json"):
             channel = file.replace(".json","")
