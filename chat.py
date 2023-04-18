@@ -15,28 +15,30 @@ class twitchChat:
         self.token=token
         self.channel=channel
     
-        while True:
-            try:
-                self.connect()
-                break
-            except:
-                print("reconnecting")
-                time.sleep(1)
+        while not self.connect():
+            print("reconnecting")
+            time.sleep(1)
 
         print("chat bot started",channel )
         self.lastPing = time.time()
         self.reping = 180
+
     def close(self):
         self.soc.close()
         
     def connect(self):
-        self.soc = socket.socket()
-        self.soc.connect((self.server, self.port))
-        # self.port+=1
-        self.soc.send(f"PASS {self.token}\n".encode('utf-8'))
-        self.soc.send(f"NICK {self.nickname}\n".encode('utf-8'))
-        self.soc.send(f"JOIN {self.channel}\n".encode('utf-8'))
-        self.pong()
+        try:
+            self.soc = socket.socket()
+            self.soc.connect((self.server, self.port))
+            # self.port+=1
+            self.soc.send(f"PASS {self.token}\n".encode('utf-8'))
+            self.soc.send(f"NICK {self.nickname}\n".encode('utf-8'))
+            self.soc.send(f"JOIN {self.channel}\n".encode('utf-8'))
+            self.pong()
+            return True
+        except:
+            return False
+        
         # rev= self.soc.recv(2048)
         # response = rev.decode("utf-8")
         # print(response)
@@ -95,17 +97,13 @@ class twitchChat:
                 return responses
             
         except Exception as e:
-            try:
-                print("chat bot error at",self.channel,str(e) )
-                if("that is not a socket" in str(e)):
-                    self.soc = None
-                elif(not self.soc==None):
-                    self.soc.close()
-                    self.soc = None
-
-                self.connect()
-            except:
-                pass
+            print("chat bot error at",self.channel,str(e) )
+            if("that is not a socket" in str(e)):
+                self.soc = None
+            elif( type(self.soc)==type(socket.socket()) ):
+                self.soc.close()
+                self.soc = None
+            self.connect()
             #print("reconnecting")
             #self.connect()
         return None
