@@ -66,9 +66,9 @@ class drive:
         while True:
             x = requests.get(url)
             txt= x.text
-            if("Video is still processing".lower() in txt.lower()):
-                # print("Processing Video")
-                time.sleep(1)
+            if(not "https://lh3.googleusercontent.com/drive-viewer" in txt ):
+                print("Processing Video")
+                time.sleep(0.5)
             else:
                 print("Video done processing")
                 return
