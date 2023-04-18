@@ -9,7 +9,9 @@ class streamableUploader:
 
     def uploadFile(self,filePath,videoTitle,parent=""):
         info = self.api.upload_video(filePath, videoTitle)
-        return "https://streamable.com/"+info["shortcode"]
+        link="https://streamable.com/"+info["shortcode"]
+        self.waitForUpload(link)
+        return link
 
     def waitForUpload(self,url):
         while True:

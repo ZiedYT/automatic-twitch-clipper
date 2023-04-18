@@ -59,6 +59,7 @@ class drive:
         video_permission = {'type': 'anyone', 'role': 'reader'}
         self.service.permissions().create(fileId=file.get('id'), body=video_permission).execute()
         url = "https://drive.google.com/file/d/{}/view".format(file.get("id"))
+        self.waitForUpload(url)
         return url
     
     def waitForUpload(self,url):
