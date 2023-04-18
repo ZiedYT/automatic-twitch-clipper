@@ -17,8 +17,7 @@ class drive:
             self.creds = Credentials.from_authorized_user_file('token.json', self.SCOPES)
         else:
             googleaouth.main()
-        self.service = build('drive', 'v3', credentials=self.creds)
-
+        
     def getFolderID(self,folder):
         parent_folder_name = folder
         parent_folder_id = None
@@ -38,6 +37,7 @@ class drive:
         return parent_folder_id
     
     def uploadFile(self,file_path,title,parentfolder="clips"):
+        self.service = build('drive', 'v3', credentials=self.creds)
         parent_folder_id= self.getFolderID(parentfolder)
         file_metadata = {'name': title, 'parents': [parent_folder_id]}
 
