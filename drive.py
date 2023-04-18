@@ -5,7 +5,8 @@ import os
 import io
 import mimetypes
 import googleaouth
-
+import requests
+import time
 class drive:
     def __init__(self) -> None:   
     # Set the API scopes
@@ -61,4 +62,13 @@ class drive:
         return url
     
     def waitForUpload(self,url):
-        return
+        while True:
+            x = requests.get(url)
+            txt= x.text
+            if("Video is still processing".lower() in txt.lower()):
+                # print("Processing Video")
+                time.sleep(1)
+            else:
+                print("Video done processing")
+                return
+        
