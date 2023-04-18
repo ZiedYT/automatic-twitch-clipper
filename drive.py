@@ -54,7 +54,7 @@ class drive:
         # print(f'Video uploaded with ID: {file.get("id")}')
 
         # Set the folder and video to be public
-        folder_permission = {'type': 'anyone', 'role': 'writer', 'allowFileDiscovery': True}
+        folder_permission = {'type': 'anyone', 'role': 'reader', 'allowFileDiscovery': True}
         self.service.permissions().create(fileId=parent_folder_id, body=folder_permission).execute()
         video_permission = {'type': 'anyone', 'role': 'reader'}
         self.service.permissions().create(fileId=file.get('id'), body=video_permission).execute()
