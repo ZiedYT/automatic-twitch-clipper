@@ -4,7 +4,7 @@ from googleapiclient.http import MediaIoBaseUpload
 import os
 import io
 import mimetypes
-import googleaouth
+import googleoauth
 import requests
 import time
 class drive:
@@ -17,7 +17,7 @@ class drive:
         if os.path.exists('token.json'):
             self.creds = Credentials.from_authorized_user_file('token.json', self.SCOPES)
         else:
-            googleaouth.main()
+            googleoauth.main()
         
     def getFolderID(self,folder):
         parent_folder_name = folder

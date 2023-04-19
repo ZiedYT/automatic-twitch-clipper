@@ -23,7 +23,7 @@ DM me for any issues :)
     - google's credentials.json and token.json: 
         - register a google cloud. dont forget to add your google account as a user
         - get the client_secret and rename it to credentials.json
-        - move the file into the directory and run `python googleaouth.py`
+        - move the file into the directory and run `python googleoauth.py`
         - you will be asked to login to google
         - you will now get the token.json
 

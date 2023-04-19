@@ -38,7 +38,7 @@ contains the events you want to clip.
 class    "video uploader" <<"drive in drive.py">>{
 uploader using google drive api.
 -token: token.json
-+googleaouth(): google auth that returns token.json using googles credentials.json 
++googleoauth(): google auth that returns token.json using googles credentials.json 
 +uplaodFile(filePath,videoTitle,folder): uploads a video and returns the link, you can specify the google drive folder
 }
 
