@@ -114,7 +114,7 @@ class twitchChat:
 # counter gets +1 count if one combination is valid
 # a combination is valid if all includes are within a msg 
 class msgDetector:
-    def __init__(self,title,scenarios,channel,msg=None,positionInClip=0.5) -> None:
+    def __init__(self,title,scenarios,channel,msg=None,positionInClip=0.5,folder="clips") -> None:
         self.channel=channel
         self.instances=[]
         self.title= title
@@ -122,6 +122,7 @@ class msgDetector:
         self.msg=msg
         self.positionInClip=positionInClip
         self.uploading=False
+        self.folder=folder
 
         self.scenarios=scenarios
         for scenario in self.scenarios:

@@ -6,6 +6,7 @@
     "Detectors":[
         {
             "title":"\ud83e\uddad ARF ARF ",
+            "folder":"seal221",
             "msg":"LOSERDANCEBUTFAST NEW SEAL MOMENT \ud83e\uddad DinkDonk ❗ ",
             "positionInClip":0.5,
             "scenarios":[ 
@@ -20,6 +21,7 @@
         {
             "title":"\ud83d\udc2d \ud83d\udce3 ",
             "msg":"LOSERDANCEBUTFAST NEW LiMau5 MOMENT DinkDonk ❗ ",
+            "folder":"seal221",
             "positionInClip":0.6,
             "scenarios":[ 
                 [ 
@@ -31,6 +33,7 @@
         
         {
             "title":"\ud83d\udc13 HYEUUCK ",
+            "folder":"miss clucky",
             "msg":"LOSERDANCEBUTFAST another \ud83d\udc13 \"hiccup\" DinkDonk ❗ ",
             "positionInClip":0.6,
             "scenarios":[ 

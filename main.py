@@ -26,6 +26,8 @@ class autoClipperStreamable:
         self.recorderaouth = recorderaouth
         if(streamChannel==None):
             self.streamChannel = chatChannel
+
+
         self.clipLength=clipLength
         self.clippingRate=clippingRate
         self.timeZone=timeZone
@@ -52,8 +54,10 @@ class autoClipperStreamable:
         self.lastRun=time.time()
         # self.chatBot.sendMsg("test")
 
-    def addDetector(self,title,scenarios,msg=None,positionInClip=0.5):
-        detector = msgDetector(title,scenarios,channel=self.chatChannel,msg=msg,positionInClip=positionInClip)
+    def addDetector(self,title,scenarios,msg=None,positionInClip=0.5,folder=None):
+        if(folder==None):
+            folder= self.chatChannel
+        detector = msgDetector(title,scenarios,channel=self.chatChannel,msg=msg,positionInClip=positionInClip,folder=folder)
         self.detectors.append(detector)
 
         
@@ -99,6 +103,7 @@ class autoClipperStreamable:
         print("starting upload thread for",self.chatChannel,"position",position)
         print("--------")
         T=self.getTime()
+        # detector:msgDetector=detector
         # timestamp=detector.instances[0]
         file = self.recorder.getNearestClip(timestamp,position)
         if(file!=None):
@@ -113,7 +118,7 @@ class autoClipperStreamable:
             title = detector.title
             title+=" "+T+" automated by ZiedYT"
             try:
-                url = self.uploader.uploadFile(file,title,self.chatChannel)
+                url = self.uploader.uploadFile(file,title,detector.folder)
                 # self.uploader.waitForUpload(url)
                 if(detector.msg!=None):
                     tosend= detector.msg +" "+url+self.msgEnding
@@ -269,11 +274,12 @@ class mainApp:
                 quality = data.get("quality","720p")
                 spamChar= data.get("spamChar","⠀")
                 msgPause = data.get("msgPause",3.5)
+                
                 clipper = autoClipperStreamable (  
                     twitchUser= self.cred["clipperChannel"], chatToken = self.cred["chatToken"],
                     chatChannel=chatChannel, streamChannel=streamChannel,uploader=self.uploader,
                     recorderaouth=self.cred["recorderaouth"],quality=quality,
-                    timeZone=timeZone,clippingRate=clippingRate,
+                    timeZone=timeZone,clippingRate=clippingRate,folder=folder,
                     clipLength=clipLength,msgPosting=msgPosting,msgEnding=msgEnding,spamChar=spamChar,msgPause=msgPause
                 )
 
@@ -283,7 +289,8 @@ class mainApp:
                     # print(msg)
                     positionInClip = detector["positionInClip"]
                     scenarios = detector["scenarios"]
-                    clipper.addDetector(title=title,scenarios= scenarios, msg=msg,positionInClip=positionInClip)
+                    folder=data.get("folder",chatChannel)
+                    clipper.addDetector(title=title,scenarios= scenarios, msg=msg,positionInClip=positionInClip,folder=folder)
 
                 json_file.close()
                 self.clippers.append(clipper)
