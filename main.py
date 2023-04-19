@@ -129,14 +129,13 @@ class autoClipperClass:
                         cond = (self.linesCount-lastcount>5) or (self.linesCount < lastcount-500)
 
                         while ( not cond ):
-                            print("sleeping")
                             time.sleep(0.5)
                             now= time.time()
                             cond = (self.linesCount-lastcount>5) or (self.linesCount < lastcount-500)
                             if( now-start>=self.msgPause):
                                 break
 
-                        print("self.linesCount",self.linesCount,"lastcount",lastcount)
+                        # print("self.linesCount",self.linesCount,"lastcount",lastcount)
                         if( cond ):
                             self.chatBot.sendMsg(tosend)
                             tosend+=self.spamChar                      

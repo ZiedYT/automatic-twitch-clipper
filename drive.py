@@ -64,11 +64,11 @@ class drive:
     
     def waitForUpload(self,url):
         start = time.time()
-        while time.time()-start<5:
+        while time.time()-start<3:
             x = requests.get(url)
             txt= x.text
             if(not (("YouTube Video Player" in txt) or ("https://lh3.googleusercontent.com/drive-viewer" in txt )  or ("drive-viewer-video-player-object-0" in txt)) ):
-                print("Processing Video")
+                # print("Processing Video")
                 time.sleep(1)
             else:
                 print("Video done processing")
