@@ -69,7 +69,7 @@ class drive:
             txt= x.text
             if(not "https://lh3.googleusercontent.com/drive-viewer" in txt ):
                 print("Processing Video")
-                time.sleep(0.5)
+                time.sleep(1)
             else:
                 print("Video done processing")
                 return
