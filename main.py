@@ -279,7 +279,7 @@ class mainApp:
                     twitchUser= self.cred["clipperChannel"], chatToken = self.cred["chatToken"],
                     chatChannel=chatChannel, streamChannel=streamChannel,uploader=self.uploader,
                     recorderaouth=self.cred["recorderaouth"],quality=quality,
-                    timeZone=timeZone,clippingRate=clippingRate,folder=folder,
+                    timeZone=timeZone,clippingRate=clippingRate,
                     clipLength=clipLength,msgPosting=msgPosting,msgEnding=msgEnding,spamChar=spamChar,msgPause=msgPause
                 )
 
