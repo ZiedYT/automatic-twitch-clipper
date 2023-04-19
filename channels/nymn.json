@@ -1,6 +1,6 @@
 {
     "chatChannel":"nymn",
-    "quality":"720p",
+    "quality":"720p","googleToken":"tokens/nymntoken",
     "timeZone":"Europe/Berlin","clippingRate":3,
     "clipLength":12,"msgPosting":2,
     "Detectors":[

@@ -8,24 +8,16 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/drive']
+def main(name):
+    SCOPES = ['https://www.googleapis.com/auth/drive']
 
-# The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-SAMPLE_RANGE_NAME = 'Class Data!A2:E'
-
-
-def main():
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
+    # The ID and range of a sample spreadsheet.
+    SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+    SAMPLE_RANGE_NAME = 'Class Data!A2:E'
     creds = None
-    # The file token.json stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+
+    if os.path.exists('{}.json'.format(name)):
+        creds = Credentials.from_authorized_user_file('{}.json'.format(name), SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -35,7 +27,7 @@ def main():
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.json', 'w') as token:
+        with open('{}.json'.format(name), 'w') as token:
             token.write(creds.to_json())
 
     try:
@@ -60,4 +52,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    name="tokens/token"
+    if(len(sys.argv)>1):
+        name= sys.argv[1]
+
+    main(name)

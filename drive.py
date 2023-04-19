@@ -8,16 +8,16 @@ import googleoauth
 import requests
 import time
 class drive:
-    def __init__(self) -> None:   
+    def __init__(self,file) -> None:   
     # Set the API scopes
         self.SCOPES = ['https://www.googleapis.com/auth/drive']
-
+        file=file.replace(".json","")
         # Set the credentials for the API
         self.creds = None
-        if os.path.exists('token.json'):
-            self.creds = Credentials.from_authorized_user_file('token.json', self.SCOPES)
+        if os.path.exists('{}.json'.format(file)):
+            self.creds = Credentials.from_authorized_user_file('{}.json'.format(file), self.SCOPES)
         else:
-            googleoauth.main()
+            googleoauth.main('{}'.format(file))
         
     def getFolderID(self,folder):
         parent_folder_name = folder

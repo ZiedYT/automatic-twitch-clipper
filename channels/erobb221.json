@@ -1,6 +1,6 @@
 {
     "chatChannel":"erobb221","streamChannel":"erobb221",
-    "quality":"720p",
+    "quality":"720p","googleToken":"tokens/erobbtoken",
     "timeZone":"US/Central","clippingRate":3,
     "clipLength":14,"msgPosting":3,
     "Detectors":[

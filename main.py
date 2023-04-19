@@ -1,7 +1,6 @@
 from chat import twitchChat,msgDetector
 from clipper import TwitchClipper
 from drive import drive
-from streamable import streamableUploader
 import time
 import threading
 from pathlib import Path
@@ -18,7 +17,7 @@ except:
     pass
 
 class autoClipperClass:
-    def __init__(self,twitchUser,chatToken, chatChannel, uploader,recorderaouth,streamChannel=None,clippingRate=3,clipLength=13,timeZone=None,msgPosting=1,msgPause=3.5,quality="720p",msgEnding=" (automated) MrDestructoid ",spamChar="⠀"):
+    def __init__(self,twitchUser,chatToken, chatChannel, googleToken,recorderaouth,streamChannel=None,clippingRate=3,clipLength=13,timeZone=None,msgPosting=1,msgPause=3.5,quality="720p",msgEnding=" (automated) MrDestructoid ",spamChar="⠀"):
         self.twitchUser= twitchUser
         self.chatToken = chatToken
         self.chatChannel=chatChannel
@@ -34,7 +33,7 @@ class autoClipperClass:
         self.detectors=[]
         self.msgPosting=msgPosting
         self.msgPause = msgPause
-        self.uploader = uploader
+        self.uploader = drive(googleToken)
         self.running = True        
         self.quality = quality
         self.msgEnding= msgEnding
@@ -207,16 +206,16 @@ class mainApp:
         self.clippers=[]
         print(datetime.datetime.now() )
         self.loadCredentials()
-        if( os.path.isfile("token.json") ):
-            self.uploader = drive()
-            print("using google drive")
-        else:
-            self.uploader =streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
-            print("using streamable")
+        # if( os.path.isfile("token.json") ):
+        #     self.uploader = drive()
+        #     print("using google drive")
+        # else:
+        #     self.uploader =streamableUploader(self.cred["streamableLogin"],self.cred["streamablePass"])
+        #     print("using streamable")
         # self.uploader=uploader(self.cred["streamableLogin"],self.cred["streamablePass"],self.cred["imgurClinetID"] )
 
-        for file in glob.glob("*.json"):
-            channel = file.replace(".json","")
+        for file in glob.glob("channels/*.json"):
+            channel = os.path.basename(file).replace(".json","")
             add = self.cred.get(channel,None)
             if (add==None):
                 if(channel in os.environ):
@@ -274,10 +273,12 @@ class mainApp:
                 quality = data.get("quality","720p")
                 spamChar= data.get("spamChar","⠀")
                 msgPause = data.get("msgPause",3.5)
-                
+                googleToken=data.get("googleToken","tokens/token")
+                googleToken=googleToken.replace(".json","")
+
                 clipper = autoClipperClass (  
                     twitchUser= self.cred["clipperChannel"], chatToken = self.cred["chatToken"],
-                    chatChannel=chatChannel, streamChannel=streamChannel,uploader=self.uploader,
+                    chatChannel=chatChannel, streamChannel=streamChannel,googleToken=googleToken,
                     recorderaouth=self.cred["recorderaouth"],quality=quality,
                     timeZone=timeZone,clippingRate=clippingRate,
                     clipLength=clipLength,msgPosting=msgPosting,msgEnding=msgEnding,spamChar=spamChar,msgPause=msgPause
