@@ -289,7 +289,7 @@ class mainApp:
                     # print(msg)
                     positionInClip = detector["positionInClip"]
                     scenarios = detector["scenarios"]
-                    folder=data.get("folder",chatChannel)
+                    folder=detector.get("folder",chatChannel)
                     clipper.addDetector(title=title,scenarios= scenarios, msg=msg,positionInClip=positionInClip,folder=folder)
 
                 json_file.close()
