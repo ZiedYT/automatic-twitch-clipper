@@ -63,7 +63,8 @@ class drive:
         return url
     
     def waitForUpload(self,url):
-        while True:
+        start = time.time()
+        while time.time()-start<5:
             x = requests.get(url)
             txt= x.text
             if(not "https://lh3.googleusercontent.com/drive-viewer" in txt ):
