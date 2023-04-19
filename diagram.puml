@@ -1,0 +1,94 @@
+@startuml
+class    mainapp{
+main app. used to load credentials and pass them to the clippers
+-loadCredentials(): loads the credential from credentials.json
+-loadJson(): loads the jsons to create the clippers
+}
+
+class    automaticClipper<<"autoClipperClass in main.py">>{
+each clipper represent a twitch stream. 
+-chat bot: connects to the chat
+-message detector
+-recorder
+}
+class    recorder<<"TwitchClipper in clipper.py">>{
+calls streamlink to save segmented clips. 
+-recorderaouth: your twitch player token
+-clipLength: length of the clips in seconds
+-clippingRate: starts a new clip every clippingRate.
++isOnline(): checks if streamer isOnline.
++startClip(): called to start a recording
++getNearestClip(timestamp,position): selects the clip, so that timestamp==position in clip)
+}
+
+class    "chat bot" <<"twitchChat in chat.py">>{
+used to detect the msg and send the link back.
+-chatToken: your chat token
+-name: your twitch username
+-channel: the chat to connect to
+-msgPosting: how many times to send the msg link when a clip is detected 
+}
+
+class    "messgae detector" <<"msgDetector in chat.py">>{
+contains the events you want to clip.
+-detectors: List of dicts.
++spin(): gets the new lines from the chat bots\nif the streamer is online\nthe lines are passed to the detectors
+}
+
+class    "video uploader" <<"drive in drive.py">>{
+uploader using google drive api.
+-token: token.json
++googleaouth(): google auth that returns token.json using googles credentials.json 
++uplaodFile(filePath,videoTitle,folder): uploads a video and returns the link, you can specify the google drive folder
+}
+
+
+abstract   detector{
+[not a class but a dict]
+represents an event you want to clip. 
+-title: video title
+-msg: message to be send in chat with the clip.
+-folder: google drives folder. uses the chatrooms name by default.
+-\npositionInClip: position of msg in clip. \nto choose from the overlapping clips.
+-List of scenarios
++isActive(): detector is active if atleast one scenario is active.
+}
+
+abstract   scenario{
+[not a class but part of the dict]
+represents one way a chat would react to an event. 
+- List of counters
++isActive(): scenario is active if ALL of its counters are active.
+}
+
+abstract   "messgae counter"{
+[not a class but part of the dict]
+-name: helps you debug
+-thresh: threshold of detected messages
+-windowSize: the window [in seconds] to count the detected messages.
+-count: current count of active detected messages.
+-\nusers: optional, list of user that can use this counter.\ncombained with a tresh of one this can become a command.
+-\npositionInClip: you can specify a position to override the detectors position.\nif the scenario of this counter is chosen this position will be used instead
++\ndetect(): calls the combinations messageDetected().\ncount gets +1 if a new message follows a combination.\n count gets -1 if an active message is older than the window.
++isActive(): is active if current count>=tresh
+}
+abstract   combination{
+-List of required words.
+-List of non allowed words.
+-List of users: you can define a list of users that are allowed to use this combination\ncan be used for commands for example
++\nmessageDetected(): a message follows a combination\nif it includes all of the required words\nand doesn't have any of the non allowed words.
+}
+
+mainapp --> automaticClipper:" List"
+mainapp --> "video uploader"
+automaticClipper --> "chat bot"
+automaticClipper --> "messgae detector"
+automaticClipper --> recorder
+
+"messgae detector" --> detector: " List of dicts"
+detector --> scenario: " List"
+scenario --> "messgae counter": " List"
+"messgae counter" --> combination: " List"
+
+
+@enduml

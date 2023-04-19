@@ -17,7 +17,7 @@ try:
 except:
     pass
 
-class autoClipperStreamable:
+class autoClipperClass:
     def __init__(self,twitchUser,chatToken, chatChannel, uploader,recorderaouth,streamChannel=None,clippingRate=3,clipLength=13,timeZone=None,msgPosting=1,msgPause=3.5,quality="720p",msgEnding=" (automated) MrDestructoid ",spamChar="⠀"):
         self.twitchUser= twitchUser
         self.chatToken = chatToken
@@ -275,7 +275,7 @@ class mainApp:
                 spamChar= data.get("spamChar","⠀")
                 msgPause = data.get("msgPause",3.5)
                 
-                clipper = autoClipperStreamable (  
+                clipper = autoClipperClass (  
                     twitchUser= self.cred["clipperChannel"], chatToken = self.cred["chatToken"],
                     chatChannel=chatChannel, streamChannel=streamChannel,uploader=self.uploader,
                     recorderaouth=self.cred["recorderaouth"],quality=quality,
