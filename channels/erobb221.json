@@ -11,8 +11,8 @@
             "positionInClip":0.5,
             "scenarios":[ 
                 [ 
-                    { "name":"seal","thresh":7,"windowSize":5,
-                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"] ,"caseSensitive" :true } ] 
+                    { "name":"seal","thresh":7,"windowSize":6,
+                    "combinations":[ {"include": ["\ud83e\uddad"],"exclude":["Prayge","inc","incoming","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :false } ] 
                     }
                 ]
             ]
@@ -40,8 +40,8 @@
                 [ 
                     { "name":"rooster+wut: rooster","thresh":5,"windowSize":8,
                     "combinations":[ 
-                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :true } ] 
+                        {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","incoming","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :false } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","incoming","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :false } ] 
                     },
                     { "name":"rooster+wut: WutFace","thresh":6,"windowSize":6,
                     "combinations":[ {"include": ["WutFace"],"caseSensitive" :true } ] 
@@ -49,8 +49,8 @@
                 ],
                 [
                     { "name":"rooster","thresh":6,"windowSize":8,
-                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :true } ,
-                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :true } ] 
+                    "combinations":[ {"include": ["\ud83d\udc14"],"exclude":["Prayge","inc","incoming","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :false } ,
+                        {"include": ["\ud83d\udc13"],"exclude":["Prayge","inc","incoming","PepeLaugh","?","PauseChamp","GachiPls",":tf:","kek"],"caseSensitive" :false } ] 
                     }
                 ]
             ]
