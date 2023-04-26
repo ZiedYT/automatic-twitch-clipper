@@ -2,7 +2,7 @@
     "chatChannel":"brittt","streamChannel":"brittt",
     "quality":"720p","googleToken":"tokens/erobbtoken",
     "timeZone":"US/Central","clippingRate":4,
-    "clipLength":13,"msgPosting":2,
+    "clipLength":12,"msgPosting":2,
     "spamChar":".",
     "Detectors":[
         {

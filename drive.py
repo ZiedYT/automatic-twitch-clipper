@@ -40,6 +40,8 @@ class drive:
     def uploadFile(self,file_path,title,parentfolder="clips"):
         self.service = build('drive', 'v3', credentials=self.creds)
         parent_folder_id= self.getFolderID(parentfolder)
+        if(not ".mp4" in title):
+            title=title+".mp4"
         file_metadata = {'name': title, 'parents': [parent_folder_id]}
 
         # Set the media file

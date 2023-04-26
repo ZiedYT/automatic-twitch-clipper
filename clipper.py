@@ -19,6 +19,7 @@ class TwitchClipper:
             clipLength=10
         self.clipLength=clipLength
         self.oldTime=0
+        self.oldclip=time.time()
         self.timeout=60
         self.quality = quality
         self.wantedQuality = quality
@@ -100,7 +101,7 @@ class TwitchClipper:
             self.startSession()
         return online
     
-    def startClip(self):
+    def startClip(self,currTime):
         if(not self.online):
             return "-1"     
               
@@ -135,6 +136,7 @@ class TwitchClipper:
             break
 
         del streams   
+        self.oldclip=currTime
         return recorded_filename
             
     def saveStream(self,fd):
@@ -210,7 +212,7 @@ class TwitchClipper:
                 # print("new clip")
                 # print("new clip delta {} vs rate {}".format( int(currTime-self.oldTime),int(self.clippingRate) ) )
                 self.oldTime =currTime
-                threading.Thread(target=self.startClip).start()
+                threading.Thread(target=self.startClip,args=(currTime,)).start()
                 return True
             
         folderPath= self.recorded_path
