@@ -64,14 +64,12 @@ class autoClipperClass:
     def loopOnce(self):
         lines=None
         lines= self.chatBot.spinOnce()
+
         if(time.time() - self.recorder.oldclip>60):
             if(self.recorder.isOnline()):
                 self.recorder=None
                 self.recorder=  TwitchClipper(channel=self.streamChannel,clippingRate=self.clippingRate,clipLength=self.clipLength,aouth=self.recorderaouth,quality=self.quality)
-        else:
-            self.recorder.oldclip=time.time()
-    
-    
+
         try:
             self.recorder.loopOnce()
         except Exception as e: 

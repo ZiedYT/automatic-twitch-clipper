@@ -90,8 +90,10 @@ class TwitchClipper:
             
         if(online != self.online):
             self.online = online
-            status = "Online"
-            if(not online):
+            if(online):
+                status = "Online"
+                self.oldclip=time.time()
+            else:
                 status = "Offline"
                 self.session=None
 
@@ -100,6 +102,7 @@ class TwitchClipper:
 
         if(online and self.session==None):
             self.startSession()
+            
         return online
     
     def startClip(self,currTime):
