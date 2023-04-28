@@ -74,9 +74,12 @@ class TwitchClipper:
             return False
 
     def isLiveReq(self):
-        contents = requests.get('https://www.twitch.tv/' +self.username).content.decode('utf-8')
-        return  'isLiveBroadcast' in contents
-
+        try:
+            contents = requests.get('https://www.twitch.tv/' +self.username).content.decode('utf-8')
+            return  'isLiveBroadcast' in contents
+        except:
+            return False
+        
     def isOnline(self):
         req=False
         query =True
@@ -88,15 +91,13 @@ class TwitchClipper:
         if(online != self.online):
             self.online = online
             status = "Online"
-            if( online):
-                self.startSession()
-            else:
+            if(not online):
                 status = "Offline"
-                del self.session
                 self.session=None
 
             print("Clipper : Streamer {} is now {}".format(self.username,status) )
             self.quality=self.wantedQuality
+
         if(online and self.session==None):
             self.startSession()
         return online
@@ -117,7 +118,7 @@ class TwitchClipper:
             streams = self.session.streams(f"https://www.twitch.tv/{self.username}")         
         except:
             return "-1"
-        # print("--") 
+
         for quality in qualities:
             try:
                 stream = streams[quality]
@@ -130,12 +131,11 @@ class TwitchClipper:
             recorded_filename, duration = self.saveStream(fd)
             # duration = self.get_length(recorded_filename)
             if( duration < self.clipLength/2 ):
-                print(self.username,"clip was cut off, length {} instead of {}".format(duration,self.clipLength) )
+                print(self.username,"clip was cut off")
                 self.deleteFile(recorded_filename) 
                 recorded_filename="-1"
             break
 
-        del streams   
         self.oldclip=currTime
         return recorded_filename
             
@@ -209,8 +209,6 @@ class TwitchClipper:
         currTime= time.time()
         if( self.isOnline() ):
             if( int(currTime-self.oldTime)>=int(self.clippingRate) ):
-                # print("new clip")
-                # print("new clip delta {} vs rate {}".format( int(currTime-self.oldTime),int(self.clippingRate) ) )
                 self.oldTime =currTime
                 threading.Thread(target=self.startClip,args=(currTime,)).start()
                 return True
