@@ -34,6 +34,7 @@ class autoClipperClass:
         self.msgPosting=msgPosting
         self.msgPause = msgPause
         self.uploader = drive(googleToken)
+        self.uploader.test()
         self.running = True        
         self.quality = quality
         self.msgEnding= msgEnding

@@ -37,7 +37,7 @@ class drive:
 
         return parent_folder_id
     
-    def uploadFile(self,file_path,title,parentfolder="clips"):
+    def uploadFile(self,file_path,title,parentfolder="clips",wait=True):
         self.service = build('drive', 'v3', credentials=self.creds)
         parent_folder_id= self.getFolderID(parentfolder)
         if(not ".mp4" in title):
@@ -61,7 +61,8 @@ class drive:
         video_permission = {'type': 'anyone', 'role': 'reader'}
         self.service.permissions().create(fileId=file.get('id'), body=video_permission).execute()
         url = "https://drive.google.com/file/d/{}/view".format(file.get("id"))
-        self.waitForUpload(url)
+        if(wait):
+            self.waitForUpload(url)
         return url
     
     def waitForUpload(self,url):
@@ -75,4 +76,7 @@ class drive:
             else:
                 print("Video done processing")
                 return
-        
+    
+    def test(self):
+        if(os.path.isfile("test.mp4")):
+            self.uploadFile(file_path="test.mp4",title="test",parentfolder="test",wait=False)

@@ -15,7 +15,8 @@ def main(name):
     SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
     SAMPLE_RANGE_NAME = 'Class Data!A2:E'
     creds = None
-
+    if(not "tokens/" in name):
+        name="tokens/"+name
     if os.path.exists('{}.json'.format(name)):
         creds = Credentials.from_authorized_user_file('{}.json'.format(name), SCOPES)
     # If there are no (valid) credentials available, let the user log in.
@@ -29,26 +30,6 @@ def main(name):
         # Save the credentials for the next run
         with open('{}.json'.format(name), 'w') as token:
             token.write(creds.to_json())
-
-    try:
-        service = build('sheets', 'v4', credentials=creds)
-
-        # Call the Sheets API
-        sheet = service.spreadsheets()
-        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                    range=SAMPLE_RANGE_NAME).execute()
-        values = result.get('values', [])
-
-        if not values:
-            print('No data found.')
-            return
-
-        print('Name, Major:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
-    except HttpError as err:
-        print(err)
 
 
 if __name__ == '__main__':
