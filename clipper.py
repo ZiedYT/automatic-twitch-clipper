@@ -199,6 +199,24 @@ class TwitchClipper:
         indx = timediffs.index(min(timediffs))
         print("{} file found, poisiton in clip {}/{} in file {}".format(self.username,timeinclip[indx],lengths[indx],names[indx]) )
         return names[indx]
+    
+    def getNewestClip(self):    
+        folderPath = os.path.join(self.recorded_path)
+        times=[]    
+        names=[]
+        for path in os.listdir(folderPath):
+            filepath = os.path.join(folderPath, path)
+            if os.path.isfile(filepath):
+                filestart =datetime.datetime.strptime(  path.replace(".mp4","")  , "%m-%d-%Y %H-%M-%S").timestamp()
+                names.append(filepath)
+                times.append(filestart)
+
+        if(len(names)==0):
+            return None,-1
+        
+        indx = times.index(min(times))
+        return names[indx], datetime.datetime.now().timestamp() - times[indx]
+        
     def mkdir(self,folderPath):
         if(not os.path.isdir(folderPath)):
             os.mkdir(folderPath)
